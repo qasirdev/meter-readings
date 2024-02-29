@@ -1,0 +1,16 @@
+You have taken the lead on this project which currently has the highest priority on our 
+backlog. On one of the other apps you maintain, the product owner has contacted you 
+personally and asked you to create some new features as well as fix a bug. 
+You feel you cannot complete all of this work in a reasonable amount of time. 
+How would you handle this situation?
+
+
+Answer:
+I will thoroughly analyze the scope of the requested features and the high-priority project.
+After the analysis, I will discuss the potential impact on project timelines or the need 
+for additional resources with the PO. I will suggest alternatives such as extending 
+deadlines or deferring new features. Through collaboration with the PO, we should be able 
+to find a compromise that balances the needs of both projects.
+
+please open word documnets in MS office/ pages:
+Step-by-step-guide.docx 

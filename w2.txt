@@ -1,0 +1,18 @@
+You have a preliminary meeting to discuss some of the features for an existing frontend 
+application, one of the senior members of the team suggests a solution that you strongly 
+believe will not work. What, if any, actions would you take?
+
+
+
+Answer:
+I will listen care fully and try to understand proposed solution.
+I will ask different questions which will be in my mind, might be senior have some extra 
+knowledge and back ground of suggestion which I dont understand at first point.
+I will discuss pros and cons of proposed solution with example with the team.
+Like I will say I am worried that this proposed solution have some problem and will provide some examples.
+I will also propose exploring alternative options, potentially through prototyping.
+Through this collaborative process, we can reach a consensus on the best solution for the project
+
+
+please open word documnets in MS office/ pages:
+Step-by-step-guide.docx 

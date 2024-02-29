@@ -1,0 +1,135 @@
+[
+    {
+        "accountId": 1154703,
+        "externalReference": "A5945716",
+        "fullAddress": "Westwood Way, Westwood Business Park, Coventry, CV4 8LG",
+        "address": {
+            "address3": "Coventry",
+            "address2": "Westwood Business Park",
+            "address1": "Westwood Way",
+            "postcode": "CV4 8LG"
+        },
+        "name": "Mr James Timms",
+        "person": {
+            "title": "Mr",
+            "firstName": "James",
+            "lastName": "Timms"
+        },
+        "meters": [
+            {
+                "id": 5555555,
+                "fuelType": "Electricity",
+                "serialNumber": "1234567891",
+                "readings": [
+                    {
+                        "readingType": "Customer",
+                        "meterPointId": 5555555,
+                        "dateTime": "2024-02-29T09:36:11.050",
+                        "createdDate": "2024-02-29T09:36:11.050",
+                        "value": 500,
+                        "fuelType": "Electricity",
+                        "meterReadingSource": "CUSTOMER",
+                        "id": 179371715
+                    },
+                    {
+                        "id": 179371714,
+                        "readingType": "Customer",
+                        "meterPointId": 5555555,
+                        "dateTime": "2024-02-24T00:00:00",
+                        "createdDate": "2024-02-23T09:16:57.79",
+                        "value": 400,
+                        "fuelType": "Electricity",
+                        "meterReadingSource": "CUSTOMER"
+                    },
+                    {
+                        "id": 179371713,
+                        "readingType": "Estimated",
+                        "meterPointId": 5555555,
+                        "dateTime": "2024-01-02T00:00:00",
+                        "createdDate": "2024-02-23T09:16:59.587",
+                        "value": 350,
+                        "fuelType": "Electricity",
+                        "meterReadingSource": "CUSTOMER"
+                    },
+                    {
+                        "id": 179371712,
+                        "readingType": "Estimated",
+                        "meterPointId": 5555555,
+                        "dateTime": "2023-11-25T00:00:00",
+                        "createdDate": "2023-11-26T10:04:33.627",
+                        "value": 250,
+                        "fuelType": "Electricity",
+                        "meterReadingSource": "ESTIMATE"
+                    },
+                    {
+                        "id": 179371711,
+                        "readingType": "Estimated",
+                        "meterPointId": 5555555,
+                        "dateTime": "2023-11-23T00:00:00",
+                        "createdDate": "2023-11-26T10:04:33.627",
+                        "value": 100,
+                        "fuelType": "Electricity",
+                        "meterReadingSource": "ESTIMATE"
+                    }
+                ]
+            },
+            {
+                "id": 6666666,
+                "fuelType": "Gas",
+                "serialNumber": "12345678",
+                "readings": [
+                    {
+                        "readingType": "Customer",
+                        "meterPointId": 6666666,
+                        "dateTime": "2024-02-29T09:36:11.050",
+                        "createdDate": "2024-02-29T09:36:11.050",
+                        "value": 501,
+                        "fuelType": "Gas",
+                        "meterReadingSource": "CUSTOMER",
+                        "id": 179371615
+                    },
+                    {
+                        "id": 179371614,
+                        "readingType": "Customer",
+                        "meterPointId": 6666666,
+                        "dateTime": "2024-02-23T00:00:00",
+                        "createdDate": "2024-02-23T09:16:57.79",
+                        "value": 401,
+                        "fuelType": "Gas",
+                        "meterReadingSource": "CUSTOMER"
+                    },
+                    {
+                        "id": 179371613,
+                        "readingType": "Estimated",
+                        "meterPointId": 6666666,
+                        "dateTime": "2024-01-01T00:00:00",
+                        "createdDate": "2024-02-23T09:16:59.587",
+                        "value": 351,
+                        "fuelType": "Gas",
+                        "meterReadingSource": "CUSTOMER"
+                    },
+                    {
+                        "id": 179371612,
+                        "readingType": "Estimated",
+                        "meterPointId": 6666666,
+                        "dateTime": "2023-11-26T00:00:00",
+                        "createdDate": "2023-11-26T10:04:33.627",
+                        "value": 251,
+                        "fuelType": "Gas",
+                        "meterReadingSource": "ESTIMATE"
+                    },
+                    {
+                        "id": 179371611,
+                        "readingType": "Estimated",
+                        "meterPointId": 6666666,
+                        "dateTime": "2023-11-26T00:00:00",
+                        "createdDate": "2023-11-24T10:04:33.627",
+                        "value": 101,
+                        "fuelType": "Gas",
+                        "meterReadingSource": "ESTIMATE"
+                    }
+                ]
+            }
+        ]
+    }
+]
