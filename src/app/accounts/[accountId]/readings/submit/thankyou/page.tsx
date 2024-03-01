@@ -5,7 +5,7 @@ import { RootState } from '@/store/store';
 import EmptyState from '@/components/EmptyState';
 import Link from 'next/link';
 
-const thankyou = () => {
+const Thankyou = () => {
   const { selectedAccount,status,error } = useSelector(
     (state: RootState) => state.account,
   )
@@ -43,4 +43,4 @@ const thankyou = () => {
   );
 }
 
-export default thankyou
+export default Thankyou

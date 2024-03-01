@@ -7,9 +7,12 @@ interface INavDropdown {
   label: string;
   items: { label: string; href: string }[];
 }
+interface IDropdown {
+  [key: string]: boolean;
+}
 
 const Navbar = () => { 
-  const [dropdownOpen, setDropdownOpen] = useState<{ tariffs: boolean; energy: boolean }>({ tariffs: false, energy: false });
+  const [dropdownOpen, setDropdownOpen] = useState<IDropdown>({ tariffs: false, energy: false });
 
   const navLinks: INavDropdown[] = [
     {
@@ -62,7 +65,7 @@ const Navbar = () => {
             <li key={link.label} className="relative">
               <button
                 className="link-module--link--2rJEy link-module--hoverUnderlined--27yv9 font-medium" 
-                onClick={() => setDropdownOpen((prev) => ({ ...prev, [link.label]: !prev[link.label] }))} 
+                onClick={() => setDropdownOpen((prev:IDropdown) => ({ ...prev, [(link.label as string)]: !prev[(link.label as string)]}))} 
               >
                 {link.label}
               </button>

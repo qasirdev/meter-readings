@@ -6,8 +6,8 @@ import { AppDispatch, RootState } from '@/store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import EmptyState from '@/components/EmptyState';
 import { addReading } from '@/features/accountSlice';
-import { Meter, Reading } from '@/db/types';
-import useDateFormat from '@/db/useDateFormat';
+import { Meter, Reading, Account } from '@/db/types';
+import formatTheDate from '@/db/formatTheDate';
 import { formatDate } from 'date-fns';
 import { useRouter } from 'next/navigation';
 
@@ -35,15 +35,15 @@ const Submit = () => {
   let electricityMeter:Meter | undefined = undefined;
   let gasMeter:Meter | undefined = undefined;
 
-  selectedAccount?.meters.map((meter) => {
+  selectedAccount?.meters.map((meter:Meter) => {
     if (!lastElectricityReadings && meter.fuelType === "Electricity") {
-      electricityMeter = meter;
-      lastElectricityReadings = meter.readings.find((read) => {
+      electricityMeter = meter as Meter;
+      lastElectricityReadings = meter.readings.find(() => {
         return true;
       });
     } else if (!lastGasReadings && meter.fuelType === "Gas") {
       gasMeter= meter;
-      lastGasReadings = meter.readings.find((read) => {
+      lastGasReadings = meter.readings.find(() => {
         return true;
       });
     }
@@ -94,8 +94,9 @@ const Submit = () => {
       const now = new Date();
       const desiredFormat = 'yyyy-MM-dd\'T\'HH:mm:ss.SSS';
       const currentFormatedDate = formatDate(now, desiredFormat)
-      const newReadings: Omit<Reading, 'id'>[] = [
-        {
+      let newReadings: Omit<Reading, 'id'>[] = [];
+      if(electricityMeter) {
+        newReadings.push({
           "readingType": "Customer",
           "meterPointId": electricityMeter.id,
           "dateTime": currentFormatedDate,
@@ -103,8 +104,10 @@ const Submit = () => {
           "value": parseInt(electricityReading),
           "fuelType": "Electricity",
           "meterReadingSource": "CUSTOMER"
-        },
-        {
+        });
+      };
+      if(gasMeter) {
+        newReadings.push({
           "readingType": "Customer",
           "meterPointId": gasMeter.id,
           "dateTime": currentFormatedDate,
@@ -112,8 +115,8 @@ const Submit = () => {
           "value": parseInt(gasReading),
           "fuelType": "Gas",
           "meterReadingSource": "CUSTOMER"
-        }
-      ];
+        });
+      }
 
       dispatch(addReading({accountId:selectedAccount.accountId,newReadings}))
         .unwrap()
@@ -155,11 +158,20 @@ const Submit = () => {
           {lastElectricityReadings && (
             <div className="mt-8 w-1/2">
             <h2 className="text-2xl font-bold">Electricity</h2>
-            <h3 className="text-lg font-bold mt-2">Reading ({electricityMeter.serialNumber})</h3>
-            <h3 className="text-lg  mt-2">Predicted electricity usage ({parseInt(selectedAccount.predictedElecUsage)})</h3>
-            <p className="text-sm">
-              The last reading of {lastElectricityReadings.value} was received on {useDateFormat(lastElectricityReadings.createdDate)}.
-            </p>
+            {electricityMeter !== undefined && ( 
+              <h3 className="text-lg font-bold mt-2">Reading ({(electricityMeter as Meter).serialNumber})</h3> 
+            )}
+            {selectedAccount && selectedAccount.predictedElecUsage && (
+              <h3 className="text-lg mt-2">
+                Predicted electricity Usage ({selectedAccount.predictedElecUsage}) 
+              </h3>
+            )}
+            {lastElectricityReadings !== undefined && (
+              <p className="text-sm">
+                The last reading of {(lastElectricityReadings as Reading).value} was received on {formatTheDate((lastElectricityReadings as Reading).createdDate)}.
+              </p>
+
+            )}
             <input
               required
               type="number"
@@ -167,7 +179,7 @@ const Submit = () => {
               id="electricity-input" 
               value={electricityReading}
               onChange={handleInputChange}
-              maxLength="5"
+              maxLength={5}
               className="border border-gray-300 rounded-md p-2 w-64 mt-2 focus:outline-blue-500"
             />
             {electricityError && (
@@ -179,13 +191,19 @@ const Submit = () => {
           )}
 
 
-          {lastGasReadings && (
+          {lastGasReadings !== undefined && (
             <div className="mt-6">
             <h2 className="text-2xl font-bold">Gas</h2>
-            <h3 className="text-lg font-bold mt-2">Reading ({gasMeter.serialNumber})</h3>
-            <h3 className="text-lg  mt-2">Predicted Gas usage ({parseInt(selectedAccount.predictedGasUsage)})</h3>
+            {gasMeter && ( 
+              <h3 className="text-lg font-bold mt-2">Reading ({(gasMeter as Meter).serialNumber})</h3> 
+            )}
+            {selectedAccount && selectedAccount.predictedGasUsage && (
+              <h3 className="text-lg mt-2">
+                Predicted Gas Usage ({selectedAccount.predictedGasUsage}) 
+              </h3>
+            )}
             <p className="text-sm">
-              The last reading of {lastGasReadings.value} was received on {useDateFormat(lastGasReadings.createdDate)}.
+              The last reading of {(lastGasReadings as Reading).value} was received on {formatTheDate((lastGasReadings as Reading).createdDate)}.
             </p>
             <input
               required
@@ -194,7 +212,7 @@ const Submit = () => {
               name="Gas"
               value={gasReading}
               onChange={handleInputChange}
-              maxLength="5"
+              maxLength={5}
               className="border border-gray-300 rounded-md p-2 w-64 mt-2 focus:outline-blue-500"
             />
             {gasError && <div className="text-red-500 text-sm">{gasError}</div>}

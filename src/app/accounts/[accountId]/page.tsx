@@ -26,7 +26,7 @@ const AccountId = () => {
               Your electricity and gas account {selectedAccount.externalReference}. <br />
               {selectedAccount.fullAddress}
             </p>
-            <Link href="#" passHref className="text-blue-600 font-bold hover:text-blue-800 mt-2 block">Tell us you're moving 
+            <Link href="#" passHref className="text-blue-600 font-bold hover:text-blue-800 mt-2 block">Tell us you&apos;re moving 
             </Link>
           </div>
 

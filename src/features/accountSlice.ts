@@ -41,7 +41,7 @@ const calculatePredictedUsage = (selectedAccount:any,fuelType:string) => {
   const averageDifference = differences.reduce((sum, value) => sum + value, 0) / 3;
   const predictedUsage = readings[0].value + averageDifference;
 
-  return predictedUsage.toFixed(2);;
+  return predictedUsage.toFixed(0);;
 };
 
 const accountSlice = createSlice({

@@ -1,7 +1,7 @@
 'use client'
 import EmptyState from '@/components/EmptyState';
 import { Reading } from '@/db/types';
-import useDateFormat from '@/db/useDateFormat';
+import formatTheDate from '@/db/formatTheDate';
 import { RootState } from '@/store/store';
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -68,7 +68,7 @@ const Readings = () => {
               <tbody>
                 {allElectricityReadings.map((reading) => (
                   <tr key={reading.id} className='border-b border-gray-300'>
-                    <td >{useDateFormat(reading.dateTime)}</td> 
+                    <td >{formatTheDate(reading.dateTime)}</td> 
                     <td >
                       <div className="pt-3"><strong>Reading:</strong> {reading.value}</div>
                       <div className="pb-3">
@@ -94,7 +94,7 @@ const Readings = () => {
               <tbody>
                 {allGasReadings.map((reading) => (
                   <tr key={reading.id} className='border-b border-gray-300'>
-                    <td >{useDateFormat(reading.dateTime)}</td> 
+                    <td >{formatTheDate(reading.dateTime)}</td> 
                     <td >
                       <div className="pt-3"><strong>Reading:</strong> {reading.value}</div>
                       <div className="pb-3">
